@@ -19,9 +19,6 @@ then
 		#install git
 		sudo apt-get --yes --force-yes install git
 		
-    # Install latest stable version of mongo
-    apt-get install mongodb-10gen
-		
 		# Install StrongLoop Node
 		cd /opt
 			# strongloop-node_1.1.4-1_amd64.deb
@@ -29,19 +26,17 @@ then
 		sudo wget -O strongloop-node_amd64.deb http://strongloop.com/products/downloads/5334/u-0075
 		sudo dpkg -i strongloop-node_amd64.deb
 		
+		# Install latest stable version of mongo
+    apt-get install mongodb-10gen
+		
 		#install some npm components
 		sudo npm install -g forever
 		
-		# Symlink our host node-apps to the guest /var/node-apps folder - MAS
-    ln -s /vagrant/default-node-app /var/default-node-app
+		# Symlink our host node-apps to the guest /var/node-apps folder
     ln -s /vagrant/strongnode-app-folder /var/strongnode-app-folder
-		
-    echo "Your default node server is now running. Find it in default-node-app/"
-    echo " 'node /var/default-node-app/app.js' to run the node app in default-node-app"
 		
     echo "You can place other node apps in gthe /strongnode-app-folder/ and find them at /var/strongnode-app-folder/"
     echo " 'slc run /var/strongnode-app-folder/myApp/app.js' to run the strong node node app in strongnode-app-folder/myApp"
 		
-    # Run the default node app
-    #node /var/default-node-app/app.js
+    # Run the /var/strongnode-app-folder with slc run app.js
 fi
