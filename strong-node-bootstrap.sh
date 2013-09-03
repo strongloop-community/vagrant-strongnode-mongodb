@@ -4,7 +4,7 @@
 sudo su
 
 # way of checking if you we need to install everything
-if [ ! -d "/var/www" ]
+if [ ! -d "/var/strongnode-app-folder" ]
 then
     # Add mongo to apt
     apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
@@ -27,8 +27,12 @@ then
 		sudo dpkg -i strongloop-node_amd64.deb
 		
 		# Install latest stable version of mongo
-    apt-get install mongodb-10gen
-		
+		if [ ! -d "/var/strongnode-app-folder" ]
+		then
+			mkdir /data
+			mkdir /data/db/
+    	apt-get install mongodb-10gen
+		fi
 		#install some npm components
 		sudo npm install -g forever
 		
@@ -39,4 +43,7 @@ then
     echo " 'slc run /var/strongnode-app-folder/myApp/app.js' to run the strong node node app in strongnode-app-folder/myApp"
 		
     # Run the /var/strongnode-app-folder with slc run app.js
+
+		# Run the mongodb server
+		mongod
 fi
