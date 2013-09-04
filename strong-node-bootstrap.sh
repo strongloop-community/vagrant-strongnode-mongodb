@@ -17,7 +17,17 @@ then
     apt-get install -y memcached build-essential
 		
 		#install git
-		sudo apt-get --yes --force-yes install git
+		apt-get --yes --force-yes install git
+		
+		# Install latest stable version of mongo
+		if [ ! -d "/var/strongnode-app-folder" ]
+		then
+			mkdir /data
+			mkdir /data/db/
+			echo " running: apt-get install mongodb-10gen "
+    	apt-get install -y mongodb-10gen
+			#apt-get install -y mongodb-server
+		fi
 		
 		# Install StrongLoop Node
 		cd /opt
@@ -26,13 +36,6 @@ then
 		sudo wget -O strongloop-node_amd64.deb http://strongloop.com/products/downloads/5334/u-0075
 		sudo dpkg -i strongloop-node_amd64.deb
 		
-		# Install latest stable version of mongo
-		if [ ! -d "/var/strongnode-app-folder" ]
-		then
-			mkdir /data
-			mkdir /data/db/
-    	apt-get install mongodb-10gen
-		fi
 		#install some npm components
 		sudo npm install -g forever
 		
