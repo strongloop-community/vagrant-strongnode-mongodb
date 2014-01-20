@@ -17,3 +17,6 @@
 - [Strong Node ](http://StrongLoop.com)
 - [Vagrant Documentation](http://docs.vagrantup.com/v2/getting-started/index.html)
 - [MongoDB](http://mongodb.org)
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/7ca7c2f6aef75c2cb0d821319461978b "githalytics.com")](http://githalytics.com/strongloop-community/vagrant-strongnode-mongodb)
+
